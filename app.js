@@ -37,6 +37,15 @@ app.use('/api', historiqueRoutes);
 /*const setupRoutes = require('./routes/setupRoutes');
 app.use('/api/setup', setupRoutes);*/
 
+const corsOptions = {
+  origin: '*', // Pour tester uniquement. Ensuite, spécifie ton domaine Flutter.
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+
+
 // Exemple de route test
 app.get('/', (req, res) => {
   res.send('API DBSLog opérationnelle');
