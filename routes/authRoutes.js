@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const authController = require('../controllers/authController');
+const authController = require('../controllers/authcontroller');
 
 // Visiteur s'inscrit
 router.post('/visiteur/register', authController.registerVisiteur);
