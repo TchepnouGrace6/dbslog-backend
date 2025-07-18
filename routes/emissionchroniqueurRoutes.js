@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/emissionchroniqueurcontroller');
-const { verifyToken, isAdmin } = require('../middlewares/authMiddleware');
+const { verifyToken, isAdmin } = require('../middlewares/authmiddleware');
 
 // Accessible uniquement par l’administrateur
 router.post('/create-emission', verifyToken, isAdmin, controller.create);
