@@ -52,19 +52,23 @@ exports.loginVisiteur = (req, res) => {
 exports.loginUtilisateur = (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
+    console.log("Email ou mot de passe manquant");
     return res.status(400).json({ message: 'Email et mot de passe requis' });
   }
   Utilisateur.findByEmail(email, (err, results) => {
     if (err) return res.status(500).json(err);
     if (results.length === 0) {
+      console.log("Utilisateur non trouvé avec cet email");
       return res.status(400).json({ message: 'Email ou mot de passe incorrect' });
     }
     const user = results[0];
     bcrypt.compare(password, user.password, (err, isMatch) => {
       if (err) return res.status(500).json(err);
+      console.log("Mot de passe incorrect");
       if (!isMatch) return res.status(400).json({ message: 'Email ou mot de passe incorrect' });
 
       const token = jwt.sign({ id: user.id, role: user.role }, JWT_SECRET, { expiresIn: '24h' });
+      console.log("Connexion réussie :", user.email);
       res.json({ token, utilisateur: { id: user.id, nom: user.nom, email: user.email, role: user.role } });
     });
   });
