@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const emissionController = require('../controllers/emissioncontroller');
-const { verifyToken, isAdmin } = require('../middlewares/authMiddleware');
+const { verifyToken, isAdmin } = require('../middlewares/authmiddleware');
 
 // Routes CRUD accessibles uniquement à l'administrateur
 router.post('/createemission', verifyToken, isAdmin, emissionController.createEmission);
