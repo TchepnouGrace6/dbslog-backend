@@ -1,4 +1,4 @@
-const EmissionChroniqueur = require('../models/emissionChroniqueurmodel');
+const EmissionChroniqueur = require('../models/emissionchroniqueurmodel');
 const db = require('../configuration/db');
 
 exports.create = (req, res) => {
