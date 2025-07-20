@@ -10,7 +10,8 @@ exports.createEmission = (req, res) => {
     heure_debut,
     duree,
     presentateur_id,
-    video_url
+    video_url,
+    categorie
   } = req.body;
 
   /// Champs obligatoires
@@ -66,6 +67,7 @@ exports.createEmission = (req, res) => {
     duree: duree || null,
     presentateur_id: presentateur_id || null,
     video_url: video_url || null,
+    categorie: categorie || null,
   };
 
   Emission.create(data, (err4, result) => {
@@ -118,7 +120,8 @@ exports.updateEmission = (req, res) => {
     heure_debut,
     duree,
     presentateur_id,
-    video_url
+    video_url,
+    categorie
   } = req.body;
 
   const data = {
@@ -130,6 +133,7 @@ exports.updateEmission = (req, res) => {
     duree: duree || null,
     presentateur_id: presentateur_id || null,
     video_url : video_url || null,
+    categorie : categorie || null,
   };
 
   Emission.update(id, data, (err, result) => {

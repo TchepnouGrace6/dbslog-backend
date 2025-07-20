@@ -2,12 +2,12 @@ const db = require('../configuration/db');
 
 const Emission = {
   create: (data, callback) => {
-    const { titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url } = data;
+    const { titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, categorie } = data;
     const sql = `
-      INSERT INTO emission (titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO emission (titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, categorie)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
-    db.query(sql, [titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url], callback);
+    db.query(sql, [titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, categorie], callback);
   },
 
   findAll: (callback) => {
@@ -30,13 +30,13 @@ const Emission = {
   },
 
   update: (id, data, callback) => {
-    const { titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url } = data;
+    const { titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, categorie } = data;
     const sql = `
       UPDATE emission SET
-      titre = ?, description = ?, type = ?, date_diffusion = ?, heure_debut = ?, duree = ?, presentateur_id = ?, video_url=?
+      titre = ?, description = ?, type = ?, date_diffusion = ?, heure_debut = ?, duree = ?, presentateur_id = ?, video_url=?, categorie = ?
       WHERE id = ?
     `;
-    db.query(sql, [titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, id], callback);
+    db.query(sql, [titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, categorie, id], callback);
   },
 
   delete: (id, callback) => {
