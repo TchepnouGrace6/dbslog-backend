@@ -95,6 +95,24 @@ exports.getAllEmissions = (req, res) => {
     res.status(200).json(results);
   });
 };
+exports.getByCategorie= (req, res) => {
+  const categorieId = req.params.id;
+  const sql = `
+    SELECT e.*, u.nom AS nom_presentateur, c.nom AS categorie
+    FROM emission e
+    LEFT JOIN utilisateur u ON e.presentateur_id = u.id
+    LEFT JOIN categorie_emission c ON e.id_categorie = c.id
+    WHERE e.id_categorie = ?
+  `;
+  db.query(sql, [categorieId], (err, result) => {
+    if (err) {
+      res.status(500).json({ message: "Erreur serveur", error: err });
+    } else {
+      res.json(result);
+    }
+  });
+}
+
 
 exports.getEmissionById = (req, res) => {
   const { id } = req.params;
