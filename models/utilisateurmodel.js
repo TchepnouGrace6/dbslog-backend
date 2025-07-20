@@ -15,6 +15,19 @@ const Utilisateur = {
     const query = "SELECT * FROM utilisateur WHERE role IN ('presentateur', 'chroniqueur')";
     db.query(query, callback);
   },
+ update: (id, data, callback) => {
+    const { nom, email, role} = data;
+    const sql = `
+      UPDATE utilisateur SET
+      nom = ?, email = ?, type = ?, role = ?
+      WHERE id = ?
+    `;
+    db.query(sql, [nom, email, email, id], callback);
+  },
+
+  delete: (id, callback) => {
+    db.query('DELETE FROM utilisateur WHERE id = ?', [id], callback);
+  }
   // Ajoute d’autres méthodes si besoin
 };
 
