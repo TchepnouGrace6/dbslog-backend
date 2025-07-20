@@ -12,7 +12,7 @@ const Utilisateur = {
   },
 
    findAllInternes: (callback) => {
-    const query = "SELECT * FROM utilisateurs WHERE role IN ('presentateur', 'chroniqueur')";
+    const query = "SELECT * FROM utilisateur WHERE role IN ('presentateur', 'chroniqueur')";
     db.query(query, callback);
   },
   // Ajoute d’autres méthodes si besoin
