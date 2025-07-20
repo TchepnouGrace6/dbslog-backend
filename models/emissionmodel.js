@@ -12,9 +12,10 @@ const Emission = {
 
   findAll: (callback) => {
     const sql = `
-      SELECT e.*, u.nom AS nom_presentateur
+      SELECT e.*, u.nom AS nom_presentateur,c.nom AS categorie
       FROM emission e
       LEFT JOIN utilisateur u ON e.presentateur_id = u.id
+       LEFT JOIN categorie_emission c ON e.id_categorie = c.id
     `;
     db.query(sql, callback);
   },
