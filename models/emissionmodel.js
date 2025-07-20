@@ -29,6 +29,7 @@ const Emission = {
     db.query(sql, [id], callback);
   },
 
+
   update: (id, data, callback) => {
     const { titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, id_categorie } = data;
     const sql = `
