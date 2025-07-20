@@ -19,10 +19,10 @@ const Utilisateur = {
     const { nom, email, role} = data;
     const sql = `
       UPDATE utilisateur SET
-      nom = ?, email = ?, type = ?, role = ?
+      nom = ?, email = ?, role = ?
       WHERE id = ?
     `;
-    db.query(sql, [nom, email, email, id], callback);
+    db.query(sql, [nom, email, role, id], callback);
   },
 
   delete: (id, callback) => {
