@@ -30,13 +30,13 @@ const Emission = {
   },
 
   update: (id, data, callback) => {
-    const { titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, categorie } = data;
+    const { titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, id_categorie } = data;
     const sql = `
       UPDATE emission SET
-      titre = ?, description = ?, type = ?, date_diffusion = ?, heure_debut = ?, duree = ?, presentateur_id = ?, video_url=?, categorie = ?
+      titre = ?, description = ?, type = ?, date_diffusion = ?, heure_debut = ?, duree = ?, presentateur_id = ?, video_url=?, id_categorie = ?
       WHERE id = ?
     `;
-    db.query(sql, [titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, categorie, id], callback);
+    db.query(sql, [titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, id_categorie, id], callback);
   },
 
   delete: (id, callback) => {
