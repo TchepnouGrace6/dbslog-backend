@@ -2,12 +2,12 @@ const db = require('../configuration/db');
 
 const Emission = {
   create: (data, callback) => {
-    const { titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, categorie } = data;
+    const { titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, id_categorie } = data;
     const sql = `
-      INSERT INTO emission (titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, categorie)
+      INSERT INTO emission (titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, id_categorie)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
-    db.query(sql, [titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, categorie], callback);
+    db.query(sql, [titre, description, type, date_diffusion, heure_debut, duree, presentateur_id, video_url, id_categorie], callback);
   },
 
   findAll: (callback) => {
