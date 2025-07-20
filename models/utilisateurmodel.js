@@ -9,7 +9,12 @@ const Utilisateur = {
   findByEmail: (email, callback) => {
     const sql = 'SELECT * FROM utilisateur WHERE email = ?';
     db.query(sql, [email], callback);
-  }
+  },
+
+   findAllInternes: (callback) => {
+    const query = "SELECT * FROM utilisateurs WHERE role IN ('presentateur', 'chroniqueur')";
+    db.query(query, callback);
+  },
   // Ajoute d’autres méthodes si besoin
 };
 
